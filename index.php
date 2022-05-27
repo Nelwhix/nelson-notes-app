@@ -1,3 +1,10 @@
+<?php
+    require_once 'vendor/autoload.php';
+    use NotesApp\Notes;
+    $conn = new \NotesApp\Notes();
+
+    $notes = $conn->getNotes();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +14,7 @@
     <title>Notes app</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <nav class="navbar bg-primary navbar-dark">
@@ -17,30 +25,37 @@
     </nav>
     <section class="p-5 bg-light">
         <div class="container-sm">
-            <form class="row" action="create.php" method="POST">
+            <form class="row" action="includes/create.php" method="POST">
                 <input type="hidden" name="id">
                 <div class="col-md-5">
                     <input class="form-control mb-3" type="text" name="title" id= "input1" placeholder="Note Title">
                     <textarea name="description" class="form-control mb-3" cols="30" rows="4" placeholder="Note Description"></textarea>
-                    <button type="button" class="btn btn-outline-primary">New Note</button>
-                </div>
+                    <button type="submit" name="submit" class="btn btn-outline-primary">New Note</button>
+                   </div>
+                   
             </form>
         </div>
     </section>
 
     <section class="p-5 bg-light">
-        <div class="container-sm">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-title">
-                        <a href="">Sample note</a>
+        <div class="container">
+            <div class="d-flex">
+                <?php foreach ($notes as $note): ?>
+                    <div class="">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <a href=""><?php echo $note['notes_title'];?></a>
+                                </div>
+                                <div class="card-text">
+                                    <?php echo $note['notes_desc'];?>
+                                </div>
+                                <small><?php echo $note['notes_createdate'];?></small>
+                                <button class="fixedbn btn btn-outline-secondary">X</button>
+                            </div>  
                     </div>
-                    <div class="card-text">
-                        Sample note description
-                    </div>
-                    <small>26/02/20 16:43:00</small>
-                    <button class="close">X</button>
-                </div>  
+               <?php endforeach; ?>
+            </div>
             </div>
         </div>
     </section>

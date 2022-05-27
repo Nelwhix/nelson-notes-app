@@ -1,0 +1,17 @@
+{
+    "name": "nelwhix/notes-app",
+    "autoload": {
+        "psr-4": {
+            "NotesApp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Nelwhix",
+            "email": "nelsonisioma1@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.4"
+    }
+}
