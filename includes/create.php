@@ -1,6 +1,7 @@
 <?php
     if (isset($_POST['submit'])) {
-        require_once '../classes/notes.class.php';
+        require_once 'vendor/autoload.php';
+        use NotesApp\classes\Notes;
 
         $title = $_POST['title'];
         $desc = $_POST['description'];

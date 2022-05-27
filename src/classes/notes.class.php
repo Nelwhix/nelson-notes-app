@@ -1,5 +1,7 @@
 <?php
-    namespace NotesApp;
+    // include 'dbh.class.php';
+    namespace NotesApp\classes;
+    use NotesApp\classes\Dbh;
     class Notes extends Dbh {
 
         public function getNotes() 
@@ -7,7 +9,7 @@
             $sql = "SELECT * FROM notes ORDER BY notes_createdate DESC";
             $stmt = $this->connect()->prepare($sql);
             $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
         }
         

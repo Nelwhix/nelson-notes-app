@@ -1,9 +1,8 @@
 <?php
+    // include 'src/notes.class.php';
     require_once 'vendor/autoload.php';
-    use NotesApp\Notes;
-    $conn = new \NotesApp\Notes();
-
-    $notes = $conn->getNotes();
+    use NotesApp\classes\Notes;
+    $conn = new Notes();
 ?>
 <!DOCTYPE html>
 <html lang="en">
